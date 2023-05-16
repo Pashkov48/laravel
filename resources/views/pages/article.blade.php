@@ -7,7 +7,7 @@
     <p>{{$article->body}}</p>
     <div class="btn-group">
         <a href="{{route('article.page.edit', ['article'=>$article->id])}}" class="btn btn-success">Edit</a>
-        <form action="{{route('article.delete', ['article'=>$article->id])}}"  method="post">
+        <form action="{{route('article.delete', ['article'=>$article->id])}}" method="post">
             @csrf
             <button type="submit" class="btn btn-danger">Delete</button>
         </form>
@@ -18,6 +18,6 @@
             <div class="card-body">
                 <h5 class="card-title">{{$comment->username}}</h5>
                 <p class="card-text">{{$comment->body}}</p>
-        </div>
+            </div>
     @endforeach
 @endsection

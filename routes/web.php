@@ -6,7 +6,6 @@ use App\Http\Controllers\Application\ArticlesController;
 use App\Http\Controllers\Application\RegisterController;
 use App\Http\Controllers\Application\LoginController;
 
-
 Route::controller(PagesController::class)->group(function () {
     Route::get('/', 'hello')->name('hello');
     Route::get('/home', 'home')->name('home');
@@ -18,8 +17,6 @@ Route::controller(PagesController::class)->group(function () {
         ->middleware('article.is_public')
         ->name('article');
     Route::get('/articles/{article}/edit', 'updateArticleForm')->name('article.page.edit');
-
-
 });
 
 Route::controller(ArticlesController::class)->middleware('auth')->group(function () {

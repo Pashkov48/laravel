@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Articles\IsPublicMiddleware;
-use App\Http\Middleware\TokenAuthMiddleware;
+use app\Http\Middleware\Tokens\TokenAuthMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

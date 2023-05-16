@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace app\Http\Middleware\Tokens;
 
 use App\Models\Token;
 use Closure;
@@ -14,6 +14,7 @@ class TokenAuthMiddleware
     {
         //получаем таким способом заголовок Auth
         $token = $request->bearerToken('Authorization', '');
+
         //в БД ищем такой токен
         $token = Token::whereToken($token)->first();
 
@@ -23,8 +24,10 @@ class TokenAuthMiddleware
                 'message' => 'Auth error'
             ],401);
         }
+
         //устанавливаем в сесслию пользователя
         Auth::setUser($token->user);
+
         return $next($request);
     }
 }

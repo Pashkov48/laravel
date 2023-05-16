@@ -1,4 +1,5 @@
 @extends('templates.main')
+
 @section('main')
     <form action="{{route('login.action')}}" method="post">
         @csrf

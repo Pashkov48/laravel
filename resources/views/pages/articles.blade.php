@@ -1,4 +1,5 @@
 @extends('templates.main')
+
 @section('main')
     <div class="d-flex">
         @foreach($articles as $article)

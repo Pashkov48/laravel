@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Api\Comments;
 
 use App\Http\Requests\Api\ApiRequest;
-use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends ApiRequest
 {

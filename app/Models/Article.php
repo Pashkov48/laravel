@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-
 class Article extends Model
 {
     use HasFactory, SoftDeletes;
@@ -17,7 +16,6 @@ class Article extends Model
     protected $casts = [
         'is_public' => 'boolean'
     ];
-
 
     protected function title(): Attribute
     {

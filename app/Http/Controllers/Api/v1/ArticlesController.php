@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Api\v1\Articles\UpdateOrCreateRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Articles\StoreArticleRequest;
 use App\Http\Requests\Api\Articles\UpdateArticleRequest;
@@ -24,12 +23,12 @@ class ArticlesController extends Controller
         );
     }
 
-
     public function store(StoreArticleRequest $request)
     {
         if ($request->hasFile('preview_image')) {
             $previewImagePath = "/storage/{$request->file('preview_image')->store('article/previews')}";
         }
+
         //создаем запись
         $article = Article::query()->create([
             'title' => $request->input('title'),
@@ -37,18 +36,16 @@ class ArticlesController extends Controller
             'preview_image' => $previewImagePath ?? NULL,
             'is_public' => $request->boolean('is_public'),
         ]);
+
         //возвращаем то что созадали
         //так же необходимо вернуть ошибку(точнее "создано", поэтому response->json
         return response()->json($this->show($article))->setStatusCode(201, 'Post creates');
     }
 
-
     public function show(Article $article)
     {
         return new ArticleResourse($article);
-
     }
-
 
     public function update(UpdateArticleRequest $request, Article $article)
     {
@@ -56,12 +53,10 @@ class ArticlesController extends Controller
         return $this->show($article);
     }
 
-
     public function destroy(Article $article)
     {
         return [
             'status' => $article->delete()
         ];
     }
-
 }
