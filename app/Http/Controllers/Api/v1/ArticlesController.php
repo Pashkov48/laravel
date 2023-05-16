@@ -13,7 +13,7 @@ class ArticlesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth.token')->only(['show']);
+        $this->middleware('auth:sanctum')->only(['show']);
     }
 
     public function index()

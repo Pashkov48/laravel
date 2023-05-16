@@ -18,16 +18,15 @@ class UserController extends Controller
             ], 401);
         }
 
-        //перед созанием токена удаляем старый, т.к. они остаются
-        Token::query()->where('user_id', Auth::id())->delete();
-
-        $token = Token::query()->create([
-            'user_id' => Auth::id(),
-            'token' => Str::random(50)
-        ]);
+        $token = Auth::user()->createToken('api-token');
 
         return [
-            'token' => $token->token
+            'token' => $token->plainTextToken
         ];
+    }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
     }
 }
