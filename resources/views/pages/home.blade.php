@@ -1,5 +1,5 @@
 @extends('templates.main')
 
 @section('main')
-    <h1>Welcome Home!</h1>
+    <h1>Welcome Home!</h1>W
 @endsection
